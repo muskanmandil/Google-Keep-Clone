@@ -90,7 +90,7 @@ const createNotePopup = (note) => {
         noteBody.innerHTML = notePopupBody.innerHTML;
         notePopup.remove();
         document.body.classList.remove("blur");
-        inputBar.disabled = "false";
+        inputBar.removeAttribute("disabled");
     });
 
     // Appending Items in Note Popup
