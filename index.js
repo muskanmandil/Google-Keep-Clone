@@ -129,13 +129,27 @@ const createNote = () => {
     let noteBody = document.createElement("p");
     noteBody.innerHTML = inputBody.innerHTML;
 
+    // Note Delete Btn
+    let deleteBtn = document.createElement("div");
+    deleteBtn.classList.add("deleteBtn");
+    deleteBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+    deleteBtn.addEventListener("click", ()=>{
+        console.log("clicked")
+        let deletedNote = deleteBtn.parentElement;
+        deletedNote.remove();
+    });
+
     // Appending Items in Note
     note.appendChild(noteTitle);
     note.appendChild(noteBody);
+    note.appendChild(deleteBtn);
 
     // Event Listeners
-    note.addEventListener("click", () => {
-        createNotePopup(note);
+    note.addEventListener("click", (event) => {
+        console.log(event.target);
+        if(!event.target.classList.contains("fa-trash")){
+            createNotePopup(note);
+        }
     });
 
     // Appending Note in Notes Wrapper
